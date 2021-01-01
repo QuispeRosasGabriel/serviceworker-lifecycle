@@ -24,12 +24,16 @@ self.addEventListener('activate', (event) => {
 });
 
 // Cuando se recupera la conexion a internet
-
 self.addEventListener('sync', (event) => {
     console.log('recuperamos la conexion');
     console.log(event);
     console.log(event.tag);
-})
+});
+
+// Push Notifications 
+self.addEventListener('push', (event) => {
+    console.log('notificacion recibida');
+});
 
 
 // Fetch: Manejo de intercepciones http
