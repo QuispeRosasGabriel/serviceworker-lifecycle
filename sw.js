@@ -11,7 +11,7 @@ self.addEventListener('install', (event) => {
             console.log('instalaciones terminadas');
             self.skipWaiting();
             res();
-        }, 1000);
+        }, 1);
     });
 
     event.waitUntil(installation);
@@ -21,4 +21,20 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
     // Borrar caché viejo
     console.log('Service worker activado y listo');
-})
+});
+
+// Fetch: Manejo de intercepciones http
+self.addEventListener('fetch', (event) => {
+
+    // Aplicar estrategias del caché
+    console.log('Event fetch', event.request.url);
+
+    if (event.request.url.includes('reqres.in')) {
+        const resp = new Response(`{
+            ok: false,
+            mensaje: 'xd'
+        }`);
+        
+        event.respondWith(resp);
+    }
+});
