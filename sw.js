@@ -23,8 +23,17 @@ self.addEventListener('activate', (event) => {
     console.log('Service worker activado y listo');
 });
 
+// Cuando se recupera la conexion a internet
+
+self.addEventListener('sync', (event) => {
+    console.log('recuperamos la conexion');
+    console.log(event);
+    console.log(event.tag);
+})
+
+
 // Fetch: Manejo de intercepciones http
-self.addEventListener('fetch', (event) => {
+/*self.addEventListener('fetch', (event) => {
 
     // Aplicar estrategias del caché
     console.log('Event fetch', event.request.url);
@@ -34,7 +43,7 @@ self.addEventListener('fetch', (event) => {
             ok: false,
             mensaje: 'xd'
         }`);
-        
+
         event.respondWith(resp);
     }
-});
+});*/
