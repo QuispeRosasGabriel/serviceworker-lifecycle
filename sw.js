@@ -36,6 +36,19 @@ self.addEventListener('push', (event) => {
 });
 
 
+self.addEventListener('fetch', (event) => {
+    const offLineResp = new Response(`
+        Bienvenido a mi página web
+
+        Para usarla necesitas internet
+    `);
+
+    const resp = fetch(event.request)
+        .catch(() => offLineResp);
+
+    event.respondWith(resp);
+})
+
 // Fetch: Manejo de intercepciones http
 /*self.addEventListener('fetch', (event) => {
 
