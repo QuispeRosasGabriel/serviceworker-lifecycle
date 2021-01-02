@@ -17,5 +17,28 @@ if ( navigator.serviceWorker ) {
 
 }
 
+if(window.caches) {
+    // Creando el cache
+    caches.open('prueba1').then((cache) => {
+        //cache.add('/pages/offline.html');
+        cache.addAll([
+            '/index.html',
+            '/img/main.jpg',
+            '/css/style.css',
+        ]).then(() => {
+            cache.delete('/css/styles.css')
+        });
+
+        cache.match('/index.html').then((resp) => {
+            resp.text().then(console.log)
+        });
+    })
+    // Comprobando que existe el cache
+    caches.has('prueba1').then(console.log);
+    // Eliminado el cache
+    //caches.delete('prueba1').then(console.log);
+
+}
+
 /*const url = 'https://reqres.in/api/users/2'
 fetch(url).then((resp) => resp.text()).then((data) => console.log(data));*/
