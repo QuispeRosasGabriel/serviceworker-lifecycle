@@ -26,7 +26,8 @@ if(window.caches) {
             '/img/main.jpg',
             '/css/style.css',
         ]).then(() => {
-            cache.delete('/css/styles.css')
+            cache.put('index.html', new Response('Hola Mundo'));
+            //cache.delete('/css/styles.css')
         });
 
         cache.match('/index.html').then((resp) => {
