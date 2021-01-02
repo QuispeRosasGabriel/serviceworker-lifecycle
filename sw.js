@@ -37,11 +37,7 @@ self.addEventListener('push', (event) => {
 
 
 self.addEventListener('fetch', (event) => {
-    const offLineResp = new Response(`
-        Bienvenido a mi página web
-
-        Para usarla necesitas internet
-    `);
+   const offLineResp = fetch('/pages/offline.html');
 
     const resp = fetch(event.request)
         .catch(() => offLineResp);
