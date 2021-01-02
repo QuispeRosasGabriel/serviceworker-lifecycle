@@ -38,6 +38,7 @@ if(window.caches) {
     caches.has('prueba1').then(console.log);
     // Eliminado el cache
     //caches.delete('prueba1').then(console.log);
+    caches.keys().then(console.log);
 
 }
 
